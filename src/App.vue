@@ -1,76 +1,106 @@
 <template>
-  <v-app>
+  <v-app id="inspire">
     <v-app-bar
       app
-      color="#cdcdcdd9"
-      dark
-      absolute
-      shrink-on-scroll
-      fade-img-on-scroll
-      prominent
-      scroll-target="#scrolling-techniques-3"
-      src=".\assets\profile-banner.jpg"
+      color="white"
+      flat
     >
-    <template v-slot:img="{ props }">
-        <v-img
-          v-bind="props"
-          gradient="to top right, rgba(133, 133, 133, 0.8), rgba(25,32,72,.7)"
-        ></v-img>
-      </template>
-    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-container class="py-0 fill-height">
+        <v-avatar
+          class="mr-10"
+          color="grey darken-1"
+          size="32"
+        >
+        <img alt="profile"
+              :src="avatar_img">
+        </v-avatar>
+
+        <v-btn
+          v-for="link in links"
+          :key="link.text"
+          text
+          :to="link.path"
+        >
+          {{ link.text }}
+        </v-btn>
+
+        <v-spacer></v-spacer>
+
+        <v-responsive max-width="260">
+          <v-text-field
+            dense
+            flat
+            hide-details
+            rounded
+            solo-inverted
+          ></v-text-field>
+        </v-responsive>
+      </v-container>
     </v-app-bar>
 
     <v-main class="grey lighten-3">
       <v-container>
         <v-row>
-          <v-col
-            cols="12"
-            sm="2"
-          >
-            <v-sheet
-              rounded="lg"
-              min-height="268"
-            >
-              <!--  -->
+          <v-col cols="2">
+            <v-sheet rounded="lg">
+              <v-list color="transparent">
+                <v-list-item
+                  v-for="n in 5"
+                  :key="n"
+                  link
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      List Item {{ n }}
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-divider class="my-2"></v-divider>
+
+                <v-list-item
+                  link
+                  color="grey lighten-4"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Refresh
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
             </v-sheet>
           </v-col>
 
-          <v-col
-            cols="12"
-            sm="8"
-          >
+          <v-col>
             <v-sheet
               min-height="70vh"
               rounded="lg"
             >
-              <router-view/>
-            </v-sheet>
-          </v-col>
-
-          <v-col
-            cols="12"
-            sm="2"
-          >
-            <v-sheet
-              rounded="lg"
-              min-height="268"
-            >
-              <!--  -->
+              <router-view />
             </v-sheet>
           </v-col>
         </v-row>
       </v-container>
     </v-main>
+
+    <Footer />
   </v-app>
 </template>
 
 <script>
+import Footer from './components/Footer.vue'
 
 export default {
-  name: 'App',
-
+  components: {
+    Footer
+  },
   data: () => ({
-    //
+    links: [
+      { text: 'Dashboard', path: '/' },
+      { text: 'Profile', path: '/about' }
+    ],
+    avatar_img: require('./assets/avatar.jpg')
   })
 }
 </script>

@@ -12,16 +12,14 @@
 
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
+          Welcome to Hub Spaces
         </h1>
 
         <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
+          Headover to Profile to see site creator's
           <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
+            href="/about"
+          >profile</a>
         </p>
       </v-col>
 
@@ -92,10 +90,13 @@
 </template>
 
 <script>
+import profile from '../assets/profile.json'
+
 export default {
-  name: 'HelloWorld',
+  name: 'Dashboard',
 
   data: () => ({
+    profile: profile,
     ecosystem: [
       {
         text: 'vuetify-loader',

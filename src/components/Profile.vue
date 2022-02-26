@@ -6,7 +6,7 @@
                 alt="profile"
                 :src="avatar_img"
               >
-            </v-avatar><p class="ml-2 my-2">{{profile.fullname}}</p></v-card-title>
+            </v-avatar><p class="ml-2 my-2">{{profile.full_name}}</p></v-card-title>
       <v-card-subtitle><p class="my-1">{{profile.fullname_ja}}</p></v-card-subtitle>
       <v-card-text>
         Email: {{profile.email}} <br>
